@@ -2,42 +2,79 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" href="%PUBLIC_URL%/assets/app_logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#081A16" />
     <meta
       name="description"
-      content="Web site created using create-react-app"
+      content="Ebaadah is launching soon: a premium Muslim worship companion for prayer times, Quran progress, Qibla direction, daily duas, reminders, and study."
     />
+    <meta
+      name="keywords"
+      content="Ebaadah, Muslim app, Islamic app, prayer times app, Quran app, Qibla direction, daily duas, Quran study"
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://ebaadah.com/" />
+    <!-- Google Search Console: paste the verification meta tag below this line when Google gives it to you. -->
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ebaadah.com/" />
+    <meta property="og:title" content="Ebaadah is Coming Soon" />
+    <meta
+      property="og:description"
+      content="A premium Muslim companion for prayer times, Quran progress, Qibla direction, daily duas, reminders, and study."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Ebaadah is Coming Soon" />
+    <meta
+      name="twitter:description"
+      content="A privacy-first Islamic app for prayer, Quran, Qibla, daily duas, and worship tracking."
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://ebaadah.com/#organization",
+            "name": "Ebaadah",
+            "url": "https://ebaadah.com/",
+            "email": "contact@ebaadah.com",
+            "logo": "https://ebaadah.com/assets/app_logo.png"
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://ebaadah.com/#website",
+            "url": "https://ebaadah.com/",
+            "name": "Ebaadah",
+            "publisher": {
+              "@id": "https://ebaadah.com/#organization"
+            },
+            "inLanguage": "en"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "Ebaadah",
+            "applicationCategory": "LifestyleApplication",
+            "operatingSystem": "iOS, Android",
+            "description": "Ebaadah is launching soon as a Muslim worship companion for prayer times, Quran reading, Qibla direction, daily duas, reminders, Quran study, and worship tracking.",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            },
+            "publisher": {
+              "@id": "https://ebaadah.com/#organization"
+            }
+          }
+        ]
+      }
+    </script>
+    <title>Ebaadah is Coming Soon - Prayer Times, Quran, Qibla and Daily Duas</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>Ebaadah needs JavaScript enabled to show the full website experience.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
 </html>
