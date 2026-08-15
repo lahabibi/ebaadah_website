@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import "./App.css";
 
 const features = [
@@ -61,6 +62,15 @@ const siteMode = (process.env.REACT_APP_SITE_MODE || "coming-soon")
   .trim()
   .toLowerCase();
 
+const gaMeasurementId = (process.env.REACT_APP_GA_MEASUREMENT_ID || "").trim();
+const ebaadahApiBaseUrl = (
+  process.env.REACT_APP_EBAADAH_API_BASE_URL || "https://api.ebaadah.com"
+)
+  .trim()
+  .replace(/\/+$/, "");
+const notifyEndpoint = `${ebaadahApiBaseUrl}/api/ebaadah/notify`;
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 const comingSoonAssets = "/assets/coming-soon";
 
 const comingSoonFeatures = [
@@ -91,7 +101,105 @@ const comingSoonFeatures = [
   },
 ];
 
+function AnalyticsTag() {
+  useEffect(() => {
+    if (!gaMeasurementId || typeof window === "undefined") {
+      return;
+    }
+
+    const scriptId = "ebaadah-ga4";
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function gtag() {
+      window.dataLayer.push(arguments);
+    };
+    window.gtag("js", new Date());
+    window.gtag("config", gaMeasurementId);
+
+    if (document.getElementById(scriptId)) {
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.id = scriptId;
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(
+      gaMeasurementId,
+    )}`;
+    document.head.appendChild(script);
+  }, []);
+
+  return null;
+}
+
 function ComingSoon() {
+  const [notifyEmail, setNotifyEmail] = useState("");
+  const [notifyStatus, setNotifyStatus] = useState("idle");
+  const [notifyMessage, setNotifyMessage] = useState("");
+
+  async function handleNotifySubmit(event) {
+    event.preventDefault();
+
+    const email = notifyEmail.trim().toLowerCase();
+
+    if (!emailPattern.test(email)) {
+      setNotifyStatus("error");
+      setNotifyMessage("Please enter a valid email address.");
+      return;
+    }
+
+    setNotifyStatus("loading");
+    setNotifyMessage("");
+
+    try {
+      const response = await fetch(notifyEndpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          source: "coming-soon-page",
+          referrer: window.location.href,
+        }),
+      });
+
+      let payload = {};
+      try {
+        payload = await response.json();
+      } catch (error) {
+        payload = {};
+      }
+
+      if (!response.ok || payload.success === false) {
+        throw new Error(
+          payload.message ||
+            "Unable to save your email right now. Please try again.",
+        );
+      }
+
+      setNotifyEmail("");
+      setNotifyStatus("success");
+      setNotifyMessage(
+        payload.message || "You're on the list. We'll notify you at launch.",
+      );
+
+      if (window.gtag) {
+        window.gtag("event", "generate_lead", {
+          event_category: "coming_soon",
+          event_label: "notify_signup",
+        });
+      }
+    } catch (error) {
+      setNotifyStatus("error");
+      setNotifyMessage(
+        error.message || "Unable to save your email right now. Please try again.",
+      );
+    }
+  }
+
+  const isNotifyLoading = notifyStatus === "loading";
+
   return (
     <div
       className="soon-page"
@@ -130,19 +238,52 @@ function ComingSoon() {
               and grow closer to Allah every day.
             </p>
 
-            <form className="soon-email" aria-label="Email notification form">
+            <form
+              className="soon-email"
+              aria-label="Email notification form"
+              aria-busy={isNotifyLoading}
+              onSubmit={handleNotifySubmit}
+            >
               <label htmlFor="coming-soon-email">Email address</label>
               <span aria-hidden="true" className="soon-email-icon" />
               <input
                 id="coming-soon-email"
                 type="email"
+                value={notifyEmail}
+                onChange={(event) => {
+                  setNotifyEmail(event.target.value);
+                  if (notifyStatus !== "idle") {
+                    setNotifyStatus("idle");
+                    setNotifyMessage("");
+                  }
+                }}
                 placeholder="Enter your email address"
+                autoComplete="email"
+                aria-describedby={
+                  notifyMessage ? "coming-soon-email-status" : undefined
+                }
+                aria-invalid={notifyStatus === "error"}
+                disabled={isNotifyLoading}
               />
-              <button type="button" aria-label="Get notified">
+              <button
+                type="submit"
+                aria-label="Get notified"
+                disabled={isNotifyLoading}
+              >
                 <span aria-hidden="true" className="soon-mail-icon" />
-                Get Notified
+                {isNotifyLoading ? "Joining..." : "Get Notified"}
               </button>
             </form>
+
+            {notifyMessage ? (
+              <p
+                className={`soon-form-status is-${notifyStatus}`}
+                id="coming-soon-email-status"
+                role={notifyStatus === "error" ? "alert" : "status"}
+              >
+                {notifyMessage}
+              </p>
+            ) : null}
 
             <p className="soon-note">
               <span aria-hidden="true">◇</span>
@@ -429,7 +570,12 @@ function FullWebsite() {
 }
 
 function App() {
-  return siteMode === "full" ? <FullWebsite /> : <ComingSoon />;
+  return (
+    <>
+      <AnalyticsTag />
+      {siteMode === "full" ? <FullWebsite /> : <ComingSoon />}
+    </>
+  );
 }
 
 export default App;
