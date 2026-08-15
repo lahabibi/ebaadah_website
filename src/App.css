@@ -425,6 +425,8 @@ html {
 }
 
 body {
+  max-width: 100%;
+  overflow-x: hidden;
   background: var(--bg);
 }
 
@@ -1702,6 +1704,7 @@ footer p {
   position: relative;
   min-height: 100vh;
   overflow: hidden;
+  overflow-x: clip;
   color: #f8fbf3;
   background:
     linear-gradient(90deg, rgba(0, 13, 10, 0.18), rgba(0, 13, 10, 0.04) 46%, rgba(0, 13, 10, 0.1)),
@@ -2387,7 +2390,8 @@ footer p {
   .soon-header,
   .soon-main,
   .soon-footer {
-    width: min(100% - 24px, 560px);
+    width: calc(100% - 24px);
+    max-width: 560px;
   }
 
   .soon-header {
@@ -2420,12 +2424,33 @@ footer p {
     padding-top: 34px;
   }
 
+  .soon-copy {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
   .soon-copy h1 {
-    font-size: clamp(2.85rem, 14.5vw, 4.25rem);
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(2.2rem, 10.7vw, 2.9rem);
+    line-height: 1.04;
+    overflow-wrap: break-word;
+  }
+
+  .soon-copy h1 span,
+  .soon-copy h1 em {
+    max-width: 100%;
   }
 
   .soon-copy h1 em {
     white-space: normal;
+  }
+
+  .soon-lede {
+    max-width: 100%;
+    font-size: 0.98rem;
+    line-height: 1.55;
   }
 
   .soon-store-links {
@@ -2440,12 +2465,38 @@ footer p {
 
   .soon-email {
     grid-template-columns: auto minmax(0, 1fr);
+    width: 100%;
+    gap: 10px;
     padding-left: 16px;
+    border-radius: 24px;
   }
 
   .soon-email button {
     grid-column: 1 / -1;
     width: 100%;
+  }
+
+  .soon-note {
+    align-items: flex-start;
+    font-size: 0.84rem;
+    line-height: 1.45;
+  }
+
+  .soon-note span {
+    margin-top: 1px;
+  }
+
+  .soon-devices {
+    width: 100%;
+    overflow: visible;
+  }
+
+  .soon-devices img {
+    width: min(116%, 520px);
+    max-width: none;
+    margin-right: auto;
+    margin-left: 50%;
+    transform: translateX(-50%);
   }
 
   .soon-features {

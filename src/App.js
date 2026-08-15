@@ -1,92 +1,92 @@
-import './App.css';
+import "./App.css";
 
 const features = [
   {
-    title: 'Accurate prayer times',
-    text: 'Location-aware Fajr, Dhuhr, Asr, Maghrib, and Isha times with calculation settings built for daily reliability.',
-    icon: '/assets/ic_prayer.png',
+    title: "Accurate prayer times",
+    text: "Location-aware Fajr, Dhuhr, Asr, Maghrib, and Isha times with calculation settings built for daily reliability.",
+    icon: "/assets/ic_prayer.png",
   },
   {
-    title: 'Qibla direction',
-    text: 'A clear Qibla compass experience that helps Muslims find the direction of prayer wherever they are.',
-    icon: '/assets/ic_qibla.png',
+    title: "Qibla direction",
+    text: "A clear Qibla compass experience that helps Muslims find the direction of prayer wherever they are.",
+    icon: "/assets/ic_qibla.png",
   },
   {
-    title: 'Quran reading and study',
-    text: 'Read, resume, bookmark, take notes, explore reciters, and keep Quran progress close across your worship routine.',
-    icon: '/assets/ic_quran.png',
+    title: "Quran reading and study",
+    text: "Read, resume, bookmark, take notes, explore reciters, and keep Quran progress close across your worship routine.",
+    icon: "/assets/ic_quran.png",
   },
   {
-    title: 'Daily duas',
-    text: 'Morning, evening, sleep, travel, gratitude, forgiveness, hardship, and Quran duas in one calm library.',
-    icon: '/assets/ic_dua.png',
+    title: "Daily duas",
+    text: "Morning, evening, sleep, travel, gratitude, forgiveness, hardship, and Quran duas in one calm library.",
+    icon: "/assets/ic_dua.png",
   },
 ];
 
 const seoHubs = [
-  'Prayer times by city',
-  'Qibla direction by location',
-  'Daily dua library',
-  'Quran study guides',
-  'Ramadan and fasting hub',
-  'New Muslim worship guides',
+  "Prayer times by city",
+  "Qibla direction by location",
+  "Daily dua library",
+  "Quran study guides",
+  "Ramadan and fasting hub",
+  "New Muslim worship guides",
 ];
 
 const premiumItems = [
-  'Offline Quran recitation downloads',
-  'Advanced Quran study tools',
-  'Personal notes, bookmarks, and progress sync',
-  'A focused worship companion without noisy distractions',
+  "Offline Quran recitation downloads.",
+  "Advanced Quran study tools",
+  "Personal notes, bookmarks, and progress sync",
+  "A focused worship companion without noisy distractions",
 ];
 
 const faqItems = [
   {
-    question: 'What is Ebaadah?',
+    question: "What is Ebaadah?",
     answer:
-      'Ebaadah is a Muslim worship companion for prayer times, Qibla direction, Quran reading, Quran study, daily duas, reminders, and worship tracking.',
+      "Ebaadah is a Muslim worship companion for prayer times, Qibla direction, Quran reading, Quran study, daily duas, reminders, and worship tracking.",
   },
   {
-    question: 'Is Ebaadah available on iPhone and Android?',
+    question: "Is Ebaadah available on iPhone and Android?",
     answer:
-      'Ebaadah is being prepared for the App Store and Google Play. The website will point visitors to the store pages as soon as the app is live.',
+      "Ebaadah is being prepared for the App Store and Google Play. The website will point visitors to the store pages as soon as the app is live.",
   },
   {
-    question: 'Does Ebaadah use my location?',
+    question: "Does Ebaadah use my location?",
     answer:
-      'Location is used for worship features like prayer time calculation and Qibla direction. Ebaadah is designed around privacy and does not sell personal data.',
+      "Location is used for worship features like prayer time calculation and Qibla direction. Ebaadah is designed around privacy and does not sell personal data.",
   },
 ];
 
-const siteMode = (process.env.REACT_APP_SITE_MODE || 'coming-soon')
+const siteMode = (process.env.REACT_APP_SITE_MODE || "coming-soon")
   .trim()
   .toLowerCase();
 
-const comingSoonAssets = '/assets/coming-soon';
+const comingSoonAssets = "/assets/coming-soon";
 
 const comingSoonFeatures = [
   {
-    title: 'Salah',
-    text: 'Prayer times, notifications and beautiful reminders.',
+    title: "Salah",
+    text: "Prayer times, notifications and beautiful reminders.",
     icon: `${comingSoonAssets}/icon-salah.png`,
   },
   {
-    title: 'Quran',
-    text: 'Read, listen and track your Quran journey.',
+    title: "Quran",
+    text: "Read, listen and track your Quran journey.",
     icon: `${comingSoonAssets}/icon-quran.png`,
   },
   {
     title: "Du'a",
-    text: 'Authentic supplications for every moment.',
+    text: "Authentic supplications for every moment.",
     icon: `${comingSoonAssets}/icon-dua.png`,
   },
   {
-    title: 'Qibla',
-    text: 'Find Qibla direction accurately, anywhere.',
+    title: "Qibla",
+    text: "Find Qibla direction accurately, anywhere.",
     icon: `${comingSoonAssets}/icon-qibla.png`,
   },
   {
-    title: 'Daily Habits',
-    text: 'Build better habits and stay consistent in worship.',
+    title: "Daily Habits",
+    text: "Build better habits and stay consistent in worship.",
     icon: `${comingSoonAssets}/icon-habit.png`,
   },
 ];
@@ -96,7 +96,7 @@ function ComingSoon() {
     <div
       className="soon-page"
       style={{
-        '--soon-bg': `url(${comingSoonAssets}/background-mosque.png)`,
+        "--soon-bg": `url(${comingSoonAssets}/background-mosque.png)`,
       }}
     >
       <header className="soon-header" aria-label="Ebaadah coming soon header">
@@ -126,8 +126,8 @@ function ComingSoon() {
               <span>is coming soon</span>
             </h1>
             <p className="soon-lede">
-              We're preparing a better experience to help you worship,
-              learn, and grow closer to Allah every day.
+              We're preparing a better experience to help you worship, learn,
+              and grow closer to Allah every day.
             </p>
 
             <form className="soon-email" aria-label="Email notification form">
@@ -146,7 +146,8 @@ function ComingSoon() {
 
             <p className="soon-note">
               <span aria-hidden="true">◇</span>
-              We'll notify you as soon as the app is available for download. No spam, ever.
+              We'll notify you as soon as the app is available for download. No
+              spam, ever.
             </p>
           </div>
 
@@ -229,7 +230,9 @@ function FullWebsite() {
       <main id="top">
         <section className="hero section-band">
           <div className="hero-copy">
-            <p className="eyebrow">Prayer. Quran. Duas. Qibla. One companion.</p>
+            <p className="eyebrow">
+              Prayer. Quran. Duas. Qibla. One companion.
+            </p>
             <h1>Your daily Muslim worship companion.</h1>
             <p className="hero-text">
               Ebaadah helps Muslims build a calmer daily worship rhythm with
@@ -237,7 +240,10 @@ function FullWebsite() {
               duas, reminders, and study tools.
             </p>
             <div className="hero-actions" aria-label="Primary actions">
-              <a className="button button-primary" href="mailto:contact@ebaadah.com?subject=Notify%20me%20when%20Ebaadah%20launches">
+              <a
+                className="button button-primary"
+                href="mailto:contact@ebaadah.com?subject=Notify%20me%20when%20Ebaadah%20launches"
+              >
                 Get launch updates
               </a>
               <a className="button button-secondary" href="#features">
@@ -252,7 +258,11 @@ function FullWebsite() {
           </div>
 
           <div className="hero-visual" aria-label="Ebaadah app preview">
-            <img className="mosque-glow" src="/assets/i_mosque_glow.webp" alt="" />
+            <img
+              className="mosque-glow"
+              src="/assets/i_mosque_glow.webp"
+              alt=""
+            />
             <div className="phone-frame">
               <div className="phone-top">
                 <span>Assalamu Alaikum</span>
@@ -393,7 +403,10 @@ function FullWebsite() {
               Google Play.
             </p>
           </div>
-          <a className="button button-primary" href="mailto:contact@ebaadah.com?subject=Ebaadah%20website">
+          <a
+            className="button button-primary"
+            href="mailto:contact@ebaadah.com?subject=Ebaadah%20website"
+          >
             Contact Ebaadah
           </a>
         </section>
@@ -416,7 +429,7 @@ function FullWebsite() {
 }
 
 function App() {
-  return siteMode === 'full' ? <FullWebsite /> : <ComingSoon />;
+  return siteMode === "full" ? <FullWebsite /> : <ComingSoon />;
 }
 
 export default App;

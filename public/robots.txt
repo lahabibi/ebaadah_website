@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ebaadah.com/sitemap.xml
+Sitemap: https://www.ebaadah.com/sitemap.xml
